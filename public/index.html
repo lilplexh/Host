@@ -1,0 +1,94 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Game Show MVP</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div id="join-screen" class="card">
+    <h1>Game Show MVP</h1>
+    <p>Choose your role and enter your name to join.</p>
+    <div class="row">
+      <label>Name</label>
+      <input id="name" placeholder="Your name" />
+    </div>
+    <div class="row roles">
+      <button id="btn-host">I'm the Host</button>
+      <button id="btn-player">I'm a Player</button>
+    </div>
+    <p class="hint">Allow camera & mic when prompted.</p>
+  </div>
+
+  <div id="app" class="hidden">
+    <header>
+      <div class="left">
+        <h2 id="role-badge"></h2>
+        <span id="you-name"></span>
+      </div>
+      <div class="right" id="host-controls" class="hidden">
+        <button id="btn-reveal-all">Reveal All</button>
+        <button id="btn-reset">Reset Answers</button>
+      </div>
+    </header>
+
+    <main id="grid">
+      <!-- Host center -->
+      <section id="host-tile" class="tile host">
+        <video id="host-video" autoplay playsinline muted></video>
+        <div class="label">Host</div>
+      </section>
+
+      <!-- 4 player tiles -->
+      <section id="p1" class="tile player">
+        <video autoplay playsinline></video>
+        <div class="answer-container">
+          <input class="answer-input" maxlength="280" placeholder="Type your answer..." />
+          <button class="answer-send">Send</button>
+        </div>
+        <div class="answer-revealed"></div>
+        <div class="label">P1</div>
+      </section>
+      <section id="p2" class="tile player">
+        <video autoplay playsinline></video>
+        <div class="answer-container">
+          <input class="answer-input" maxlength="280" placeholder="Type your answer..." />
+          <button class="answer-send">Send</button>
+        </div>
+        <div class="answer-revealed"></div>
+        <div class="label">P2</div>
+      </section>
+      <section id="p3" class="tile player">
+        <video autoplay playsinline></video>
+        <div class="answer-container">
+          <input class="answer-input" maxlength="280" placeholder="Type your answer..." />
+          <button class="answer-send">Send</button>
+        </div>
+        <div class="answer-revealed"></div>
+        <div class="label">P3</div>
+      </section>
+      <section id="p4" class="tile player">
+        <video autoplay playsinline></video>
+        <div class="answer-container">
+          <input class="answer-input" maxlength="280" placeholder="Type your answer..." />
+          <button class="answer-send">Send</button>
+        </div>
+        <div class="answer-revealed"></div>
+        <div class="label">P4</div>
+      </section>
+    </main>
+
+    <!-- Host private panel -->
+    <aside id="host-panel" class="hidden">
+      <h3>Answers (Private)</h3>
+      <ul id="answers-list"></ul>
+    </aside>
+  </div>
+
+  <!-- Sockets and SimplePeer from CDN -->
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="https://unpkg.com/simple-peer@9.11.1/simplepeer.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
